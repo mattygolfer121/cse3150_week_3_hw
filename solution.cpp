@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "Enter Index of GPA to be Changed: " << std::endl;
 		int index;
 		std::cin >> index;
-		if (index >= 0 && index < size){
+		if (index < 0 || index >= size){
 			std::cout << "Invalid Index." << std::endl;
 			break;
 		}
