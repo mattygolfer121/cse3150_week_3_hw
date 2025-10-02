@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>   // for strlen, strcpy
-
+#include <string>
 // TODO: function prototypes
 void addStudent(char* name, double gpa, char* names[], double gpas[], int& size, int capacity);
 void updateGPA(double* gpaPtr, double newGpa);
