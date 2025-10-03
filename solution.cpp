@@ -9,7 +9,7 @@ double averageGPA(const double gpas[], int size);
 // TODO: implement addStudent
 void addStudent(char* name, double gpa, char* names[], double gpas[], int& size, int capacity) {
 	if (size >= capacity){
-		const char* msg = "Too many students, gotta expel some bro.";
+		const char* msg = "List full.";
 		throw msg;
 	} else {
 		names[size] = new char[std::strlen(name) + 1];
@@ -29,7 +29,7 @@ void updateGPA(double* gpaPTR, double newGPA){
 // TODO: implement printStudent
 void printStudent(const char* name, const double& gpa){
 	if (name == nullptr) {
-		const char* msg = "You got no students lol.";
+		const char* msg = "No students";
 		throw msg;
 	} else {
 		std::cout << name << ", " << gpa << std::endl;
@@ -38,7 +38,7 @@ void printStudent(const char* name, const double& gpa){
 // TODO: implement averageGPA
 double averageGPA(const double gpas[], int size){
 	if (size <= 0) {
-		const char* msg = "Not enough students to average man.";
+		const char* msg = "No students";
 		throw msg;
 	} else {
 		double sum = 0.0;
@@ -121,8 +121,12 @@ int main(int argc, char* argv[]) {
             case 3: {
                 // TODO: implement menu logic
 		try {
-			for (int i = 0; i < size; i++){
-				printStudent(names[i], gpas[i]);
+			if (size == 0){
+				printStudent(nullptr, 0.0);
+			}else{
+				for (int i = 0; i < size; i++){
+					printStudent(names[i], gpas[i]);
+			}
 			}
 		} catch(const char* msg) {
 			std::cout << msg << std::endl; 
@@ -133,7 +137,7 @@ int main(int argc, char* argv[]) {
                 // TODO: implement menu logic
                 try {
 			double avg = averageGPA(gpas, size);
-			std::cout << static_cast<int>(avg) << std::endl;
+			std::cout << "Average GPA: " << static_cast<int>(avg) << std::endl;
 		} catch(const char* msg) {
 			std::cout << msg << std::endl;
 		}
